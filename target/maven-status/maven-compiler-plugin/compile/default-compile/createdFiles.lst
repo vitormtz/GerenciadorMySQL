@@ -1,0 +1,5 @@
+gerenciadomysql\Main.class
+gerenciadormysql\suporte\CriacaoTabela.class
+gerenciadormysql\apresentacao\FrmConsulta.class
+gerenciadormysql\suporte\ConexaoBD.class
+gerenciadormysql\apresentacao\FrmConsulta$1.class
