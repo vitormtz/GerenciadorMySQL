@@ -36,6 +36,7 @@ public class FrmConsulta extends javax.swing.JFrame {
         tblSaida = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GerenciadorMySQL");
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
