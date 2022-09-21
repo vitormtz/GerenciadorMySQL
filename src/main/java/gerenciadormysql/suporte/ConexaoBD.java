@@ -16,7 +16,7 @@ public class ConexaoBD {
 
     public void consulta(String query, JTable tabela, JTable saida) {
         long start = System.nanoTime();
-
+        
         String url = "jdbc:mysql://localhost:3306/locadora?useSSL=false";
         String user = "root";
         String password = "sua_senha";
@@ -30,7 +30,7 @@ public class ConexaoBD {
         }
         long end = System.nanoTime();
         long time = (end - start);
-        double seconds = (double) time / 1_000_000_000.0;
+        double seconds = (double) time / 1000000000;
 
         DefaultTableModel tableModel = new DefaultTableModel();
         Object[] row = new Object[5];

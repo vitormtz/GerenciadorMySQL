@@ -90,6 +90,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="SELECT C3.CIDADE_ID AS &quot;CIDADE&quot;, C.NOME AS &quot;CATEGORIA&quot;, COUNT(C.CATEGORIA_ID) AS &quot;LOCA&#xc7;&#xd5;ES&quot;&#xa;FROM CATEGORIA C JOIN FILME_CATEGORIA FA ON C.CATEGORIA_ID = FA.CATEGORIA_ID&#xa;JOIN FILME F ON F.FILME_ID = FA.FILME_ID&#xa;JOIN INVENTARIO I ON I.FILME_ID = F.FILME_ID&#xa;JOIN ALUGUEL A ON I.INVENTARIO_ID = A.INVENTARIO_ID&#xa;JOIN CLIENTE C2 ON A.CLIENTE_ID = C2.CLIENTE_ID&#xa;JOIN ENDERECO E ON C2.ENDERECO_ID = E.ENDERECO_ID&#xa;JOIN CIDADE C3 ON E.CIDADE_ID = C3.CIDADE_ID&#xa;WHERE A.DATA_ALUGUEL BETWEEN &quot;2001-01-01&quot; AND &quot;2021-12-31&quot;&#xa;GROUP BY C3.CIDADE_ID, C.NOME&#xa;ORDER BY 1 DESC"/>
               </Properties>
             </Component>
           </SubComponents>
