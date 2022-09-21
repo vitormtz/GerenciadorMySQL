@@ -51,7 +51,7 @@ public class ConexaoBD {
         row[0] = saida.getRowCount() + 1;
         row[1] = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
         row[2] = query;
-        row[3] = tabela.getModel().getRowCount() + " lines fetched";;
+        row[3] = tabela.getModel().getRowCount() + " linhas buscadas";;
         row[4] = String.format("%.3f", seconds).replace(',', '.') + " sec";
         tableModel.addRow(row);
 
