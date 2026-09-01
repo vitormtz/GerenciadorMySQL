@@ -1,8 +1,11 @@
 package gerenciadormysql.suporte;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
@@ -14,12 +17,27 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConexaoBD {
 
+    private static Properties carregarConfiguracao() {
+        Properties config = new Properties();
+        try ( InputStream entrada = ConexaoBD.class.getResourceAsStream("/db.properties")) {
+            if (entrada == null) {
+                throw new IOException("db.properties nao encontrado. "
+                        + "Copie db.properties.example para db.properties e preencha os dados de conexao.");
+            }
+            config.load(entrada);
+        } catch (IOException ex) {
+            Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+        }
+        return config;
+    }
+
     public void consulta(String query, JTable tabela, JTable saida) {
         long start = System.nanoTime();
-        
-        String url = "jdbc:mysql://localhost:3306/locadora?useSSL=false";
-        String user = "root";
-        String password = "sua_senha";
+
+        Properties config = carregarConfiguracao();
+        String url = config.getProperty("db.url");
+        String user = config.getProperty("db.user");
+        String password = config.getProperty("db.password");
 
         try ( Connection con = DriverManager.getConnection(url, user, password);  PreparedStatement pst = con.prepareStatement(query);  ResultSet resultadoQ = pst.executeQuery()) {
             new CriacaoTabela().popularTabela(resultadoQ, tabela);
